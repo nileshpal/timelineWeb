@@ -1,0 +1,9 @@
+1) Deployment the Timeline process :-
+	a) Using composer create dependency, make sure to check composer.json file exist or not.
+	b) In root folder index.php change the development to testing or production. 
+	c) Change Config file in application/config.php . Put the url $config['base_url'] and $config['sugar_client_url'].
+	d) Enable $config['log_threshold'] by number . This number alreday mention on the config file . 
+2) .htaccess this will change according to the server . 
+
+Thanks for your deployment . 
+		  
