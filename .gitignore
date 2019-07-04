@@ -1,14 +1,11 @@
 .DS_Store
-
-application/config/config.php
-application/config/route.php
 application/cache/*
-!application/cache/index.html
+application/cache/index.html
 
 application/logs/*
-!application/logs/index.html
+application/logs/index.html
 
-!application/*/.htaccess
+application/*/.htaccess
 
 composer.lock
 
@@ -31,5 +28,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.sublime-project
 /tests/tests/
 /tests/results/
-index.php
 vendor
