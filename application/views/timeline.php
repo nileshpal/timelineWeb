@@ -206,7 +206,7 @@
     <script type = "text/javascript" src = "<?php echo base_url(); ?>js/custom.js"></script>
     <script>
     $(document).ready(function() {
-        $('.datePick').datetimepicker({
+        $('.date').datetimepicker({
             format: 'yyyy-mm-dd',
             pickTime: false,
             maxView: 4,

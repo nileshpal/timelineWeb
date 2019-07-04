@@ -16,6 +16,14 @@ $(document).ready(function(e){
             jobDetailSection(job_number,site_url,mobile_device);
         }
     });
+    
+    $(document).on("keypress", "#job_number", function(e){
+        if(e.which == 13){
+           $("#job_number_submit").trigger("click");
+        }
+    });
+
+    
 
     $(document).on("click","#job_number_submit_mob",function() {
         var job_number = $('#job_number_mob').val();
@@ -167,7 +175,7 @@ function jobDetailSection(job_number,jobdetail_url,mobile_device){
                     "Closed Invoice Finalized"
                 ];
                 var data = jQuery.parseJSON(res);
-                if(data.status === "Fail"){
+                if(data.status === "Fail" && data.msg != "Something went wrong. Please try again !"){
                     $(".alert-danger").show();
                     if(mobile_device){
                         $(".display_error_mob").text(data.msg);
@@ -178,40 +186,42 @@ function jobDetailSection(job_number,jobdetail_url,mobile_device){
                     $('#jobDetailsDescription').hide();
                     hideError();
                 }else{
-                    $("#hideTimeline").show();
-                    $(".alert-danger").hide();
-                    if(jQuery.inArray(data.status, projectStatus) !== -1) {
-                        $(".datePick").attr("disabled", true);
-                        $("#hideTimeline").hide();
-                        $(".alert-danger").show();
-                        if(mobile_device){
-                            $(".display_error_mob").text("Record can't be edited.");
+                    if(data.id){
+                        $("#hideTimeline").show();
+                        $(".alert-danger").hide();
+                        if(jQuery.inArray(data.status, projectStatus) !== -1) {
+                            $(".datePick").attr("disabled", true);
+                            $("#hideTimeline").hide();
+                            $(".alert-danger").show();
+                            if(mobile_device){
+                                $(".display_error_mob").text("Record can't be edited.");
+                            }else{
+                                $(".display_error").text("Record can't be edited.");
+                            }
+                            hideError();
                         }else{
-                            $(".display_error").text("Record can't be edited.");
+                            $(".datePick").attr("disabled", false);
                         }
-                        hideError();
-                    }else{
-                        $(".datePick").attr("disabled", false);
-                    }
-                    $("#proposal_id").val(data.id);
-                    $("#maconomyNo").val(data.maconomy_job_c);
-                    $("#project_name").text(data.name);
-                    $("#jobNumber").text(data.maconomy_job_c);
-                    $("#proposalNo").text(data.proposalNO);
-                    $("#accountName").text(data.accountName);
-                    $("#status").text(data.status);
-                    $("#maconomyStatus").text(data.maconomyStatus);
-                    $("#hidden-pst-date").val(data.startDate);
-                    $("#pst-date").val(data.startDate);
-                    $("#hidden-pet-date").val(data.closeDate);
-                    $("#pet-date").val(data.closeDate);
-                    $("#hidden-pct-date").val(data.estimatedCloseDate);
-                    $("#pct-date").val(data.estimatedCloseDate);
-                    $("#lastmodify").val(data.date_modified);
-                    $('#jobDetailsDescription').show();
-                    $(".loader").hide();
-                    if(mobile_device){  
-                        $(".hide-page-loading-msg").trigger("click");
+                        $("#proposal_id").val(data.id);
+                        $("#maconomyNo").val(data.maconomy_job_c);
+                        $("#project_name").text(data.name);
+                        $("#jobNumber").text(data.maconomy_job_c);
+                        $("#proposalNo").text(data.proposalNO);
+                        $("#accountName").text(data.accountName);
+                        $("#status").text(data.status);
+                        $("#maconomyStatus").text(data.maconomyStatus);
+                        $("#hidden-pst-date").val(data.startDate);
+                        $("#pst-date").val(data.startDate);
+                        $("#hidden-pet-date").val(data.closeDate);
+                        $("#pet-date").val(data.closeDate);
+                        $("#hidden-pct-date").val(data.estimatedCloseDate);
+                        $("#pct-date").val(data.estimatedCloseDate);
+                        $("#lastmodify").val(data.date_modified);
+                        $('#jobDetailsDescription').show();
+                        $(".loader").hide();
+                        if(mobile_device){  
+                            $(".hide-page-loading-msg").trigger("click");
+                        }
                     }
                 }
             }catch(e) {     
