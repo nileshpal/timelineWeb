@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="CodeIgniter Application Test Suite" tests="6" assertions="43" failures="0" errors="0" time="19.953241">
+    <testsuite name="Timeline_test" file="C:\xamppNew\htdocs\Timeline_Project_Local\application\tests\controllers\Timeline_test.php" fullPackage="Timeline" tests="5" assertions="42" failures="0" errors="0" time="19.858029">
+      <testcase name="test_index" class="Timeline_test" file="C:\xamppNew\htdocs\Timeline_Project_Local\application\tests\controllers\Timeline_test.php" line="24" assertions="1" time="0.214790"/>
+      <testcase name="test_job_detail" class="Timeline_test" file="C:\xamppNew\htdocs\Timeline_Project_Local\application\tests\controllers\Timeline_test.php" line="30" assertions="13" time="6.590511"/>
+      <testcase name="test_update_timeline" class="Timeline_test" file="C:\xamppNew\htdocs\Timeline_Project_Local\application\tests\controllers\Timeline_test.php" line="58" assertions="13" time="6.169962"/>
+      <testcase name="test_method_200" class="Timeline_test" file="C:\xamppNew\htdocs\Timeline_Project_Local\application\tests\controllers\Timeline_test.php" line="99" assertions="1" time="0.170891"/>
+      <testcase name="test_proposal_detail" class="Timeline_test" file="C:\xamppNew\htdocs\Timeline_Project_Local\application\tests\controllers\Timeline_test.php" line="105" assertions="14" time="6.711875"/>
+    </testsuite>
+    <testsuite name="Welcome_test" file="C:\xamppNew\htdocs\Timeline_Project_Local\application\tests\controllers\Welcome_test.php" fullPackage="Welcome" tests="1" assertions="1" failures="0" errors="0" time="0.095212">
+      <testcase name="test_index" class="Welcome_test" file="C:\xamppNew\htdocs\Timeline_Project_Local\application\tests\controllers\Welcome_test.php" line="13" assertions="1" time="0.095212"/>
+    </testsuite>
+  </testsuite>
+</testsuites>
