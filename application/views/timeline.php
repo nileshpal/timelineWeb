@@ -139,8 +139,8 @@
 <span class="sup">*</span></div>
                         <div class="col-md-12 lower-text-format">
                             <div class="form-group">
+                                <input type="hidden" class="form-control" readonly="readonly" data-date-format="dd-mm-yyyy" id="hidden-pst-date" name="hidden-pst-date" value="<?php if(count($job_detail)>0){echo $job_detail['startDate'];}?>">
                                 <div class="input-group date" data-provide="datepicker">
-                                    <input type="hidden" class="form-control datePick" readonly="readonly" data-date-format="dd-mm-yyyy" id="hidden-pst-date" name="hidden-pst-date" value="<?php if(count($job_detail)>0){echo $job_detail['startDate'];}?>">
                                     <input type="text" class="form-control datePick" readonly="readonly" data-date-format="dd-mm-yyyy" id="pst-date" name="pst-date" value="<?php if(count($job_detail)>0){echo $job_detail['startDate'];}?>">
                                     <div class="input-group-addon">
                                         <span class="glyphicon glyphicon-th"></span>
@@ -154,8 +154,8 @@
 <span class="sup">*</span></div>
                         <div class="col-md-12 lower-text-format">
                         <div class="form-group">
+                                <input type="hidden" class="form-control" readonly="readonly" data-date-format="dd-mm-yyyy" name="hidden-pet-date" id="hidden-pet-date" value="<?php if(count($job_detail)>0){echo $job_detail['closeDate'];}?>">
                                 <div class="input-group date " data-provide="datepicker">
-                                    <input type="hidden" class="form-control datePick" readonly="readonly" data-date-format="dd-mm-yyyy" name="hidden-pet-date" id="hidden-pet-date" value="<?php if(count($job_detail)>0){echo $job_detail['closeDate'];}?>">
                                     <input type="text" class="form-control datePick" readonly="readonly" data-date-format="dd-mm-yyyy" name="pet-date" id="pet-date" value="<?php if(count($job_detail)>0){echo $job_detail['closeDate'];}?>">
                                     <div class="input-group-addon">
                                         <span class="glyphicon glyphicon-th"></span>
@@ -169,8 +169,8 @@
 <span class="sup">*</span></div>
                         <div class="col-md-12 lower-text-format">
                             <div class="form-group">
+                                <input type="hidden" class="form-control" readonly="readonly" data-date-format="dd-mm-yyyy" name="hidden-pct-date" id="hidden-pct-date" value="<?php if(count($job_detail)>0){echo $job_detail['estimatedCloseDate'];}?>">
                                 <div class="input-group date" data-provide="datepicker">
-                                    <input type="hidden" class="form-control datePick" readonly="readonly" data-date-format="dd-mm-yyyy" name="hidden-pct-date" id="hidden-pct-date" value="<?php if(count($job_detail)>0){echo $job_detail['estimatedCloseDate'];}?>">
                                     <input type="text" class="form-control datePick" readonly="readonly" data-date-format="dd-mm-yyyy" name="pct-date" id="pct-date" value="<?php if(count($job_detail)>0){echo $job_detail['estimatedCloseDate'];}?>">
                                     <div class="input-group-addon">
                                         <span class="glyphicon glyphicon-th"></span>
