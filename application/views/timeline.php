@@ -189,7 +189,7 @@
                             <button type="submit" name="submit" class="btn btn-primary formSubmit submitEvent mobile">Save</button>
                         </div>
                         <div class="col-md-1 col-sm-1">
-                            <button type="button" name="submit" class="btn btn-primary formSubmit reset">Reset</button>
+                            <button type="button" name="submit" class="btn btn-primary reset">Reset</button>
                         </div>
                     </div>
                 </div>  
