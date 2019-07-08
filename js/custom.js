@@ -191,6 +191,7 @@ function jobDetailSection(job_number,jobdetail_url,mobile_device){
                         $(".alert-danger").hide();
                         if(jQuery.inArray(data.status, projectStatus) !== -1) {
                             $(".datePick").attr("disabled", true);
+                            $(".date").datetimepicker('remove');
                             $("#hideTimeline").hide();
                             $(".alert-danger").show();
                             if(mobile_device){
