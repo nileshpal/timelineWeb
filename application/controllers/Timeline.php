@@ -46,7 +46,13 @@ class Timeline extends CI_Controller {
         );
         $maconomy_number_c = $this->input->post('job_number');
         $jobDetailArray = $this->proposalRecord($maconomy_number_c);
-        $responseArray = json_decode($jobDetailArray,true);
+        if(empty($jobDetailArray)){
+            $responseArray = array("status"=>"Fail",
+                "msg"=>"Something went wrong."
+                );
+        }else{
+            $responseArray = json_decode($jobDetailArray,true);
+        }
         $response = json_encode(array_merge($responseArray,$csrfArray));
         echo json_encode($response);
     }
