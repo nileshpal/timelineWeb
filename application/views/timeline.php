@@ -10,6 +10,7 @@
 <link href="<?php echo base_url(); ?>css/jquery.mobile-1.4.5.min.css?<?php echo rand(); ?>" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    
     <!-- search div start -->
     <div class="container">
         <div class="form-group timeline-margin">
@@ -194,9 +195,9 @@
                     </div>
                 </div>  
             </div>
-        </section>    
+        </section>
         <!-- job detail div end here -->
-     </form>
+      <?php echo form_close();?>
     <button class="customVisibility show-page-loading-msg" data-theme="b" data-textonly="false" data-textvisible="true" data-msgtext="Please wait..." data-inline="true">B</button>
     <button class="customVisibility hide-page-loading-msg" data-inline="true" data-icon="delete">Hide</button>
     <script type = "text/javascript" src = "<?php echo base_url(); ?>js/jquery-3.4.1.min.js"></script>
@@ -204,21 +205,5 @@
     <script src="<?php echo base_url(); ?>js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
     <script src="<?php echo base_url(); ?>js/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
     <script type = "text/javascript" src = "<?php echo base_url(); ?>js/custom.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('.date').datetimepicker({
-            format: 'yyyy-mm-dd',
-            pickTime: false,
-            maxView: 4,
-            minView: 2,
-            autoclose: true
-        });
-        $(document).on("click",".reset",function() {
-            $("#pst-date").val($("#hidden-pst-date").val());
-            $("#pet-date").val($("#hidden-pet-date").val());
-            $("#pct-date").val($("#hidden-pct-date").val());
-        });
-    });
-    </script>
 </body>
 </html>

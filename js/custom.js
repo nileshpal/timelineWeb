@@ -1,4 +1,16 @@
 $(document).ready(function(e){
+    $('.date').datetimepicker({
+        format: 'yyyy-mm-dd',
+        pickTime: false,
+        maxView: 4,
+        minView: 2,
+        autoclose: true
+    });
+    $(document).on("click",".reset",function() {
+        $("#pst-date").val($("#hidden-pst-date").val());
+        $("#pet-date").val($("#hidden-pet-date").val());
+        $("#pct-date").val($("#hidden-pct-date").val());
+    });
     getTimeZone(); 
     $('[data-toggle="tooltip"]').tooltip(); 
     $(document).on("click","#job_number_submit",function() {
@@ -84,11 +96,7 @@ $(document).ready(function(e){
         $.mobile.loading("hide");
     });
     
-    //$('#myform').on('submit', function () {
-//    $( document ).on( "click", ".datePick", function() {
-//        $(this).parent().removeClass("custom-border-color");
-//        
-//    });
+    
     
     $( document ).on( "change", ".datePick", function() {
         $(this).parent().removeClass("custom-border-color");
@@ -152,7 +160,7 @@ $(document).ready(function(e){
 });
 
 function jobDetailSection(job_number,jobdetail_url,mobile_device){
-   
+    var csrfHash = $("input[name=csrf_test_name]").val();
     $(".loader").show();
     $.ajax({
         type: "post",
@@ -160,7 +168,8 @@ function jobDetailSection(job_number,jobdetail_url,mobile_device){
         dataType:'json',
         cache: false,               
         data: {
-            "job_number":job_number
+            "job_number":job_number,
+            csrf_test_name: csrfHash
         },
         success: function(res){                        
             try{
@@ -177,6 +186,7 @@ function jobDetailSection(job_number,jobdetail_url,mobile_device){
                 var data = jQuery.parseJSON(res);
                 if(data.status === "Fail" && data.msg != "Something went wrong. Please try again !"){
                     $(".alert-danger").show();
+                    $("input[name=csrf_test_name]").val(data.csrfHash);
                     if(mobile_device){
                         $(".display_error_mob").text(data.msg);
                     }else{
@@ -218,6 +228,8 @@ function jobDetailSection(job_number,jobdetail_url,mobile_device){
                         $("#hidden-pct-date").val(data.estimatedCloseDate);
                         $("#pct-date").val(data.estimatedCloseDate);
                         $("#lastmodify").val(data.date_modified);
+                        $("#lastmodify").val(data.date_modified);
+                        $("input[name=csrf_test_name]").val(data.csrfHash);
                         $('#jobDetailsDescription').show();
                         $(".loader").hide();
                         if(mobile_device){  
@@ -225,7 +237,7 @@ function jobDetailSection(job_number,jobdetail_url,mobile_device){
                         }
                     }
                 }
-            }catch(e) {     
+            }catch(e) { 
                 console.log('Exception while request..');
             }       
         },

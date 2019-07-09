@@ -25,6 +25,10 @@ class Timeline extends CI_Controller {
         $data['title'] = 'Timeline';
         $data['job_detail'] = array();
         $data['type'] ='';
+        $data['csrfVal'] = array(
+            'csrfName' => $this->security->get_csrf_token_name(),
+            'csrfHash' => $this->security->get_csrf_hash()
+        );
         $this->load->view('timeline',$data);
     }
 
@@ -36,16 +40,22 @@ class Timeline extends CI_Controller {
 
     public function job_detail(){
         //91231524
+        $csrfArray = array(
+            'csrfName' => $this->security->get_csrf_token_name(),
+            'csrfHash' => $this->security->get_csrf_hash()
+        );
         $maconomy_number_c = $this->input->post('job_number');
-        $response =$this->proposalRecord($maconomy_number_c);
+        $jobDetailArray = $this->proposalRecord($maconomy_number_c);
+        $responseArray = json_decode($jobDetailArray,true);
+        $response = json_encode(array_merge($responseArray,$csrfArray));
         echo json_encode($response);
     }
 
     public function update_timeline(){
-        if(!empty($this->input->post('pst-date')) && !empty($this->input->post('pet-date')) && !empty($this->input->post('pct-date'))){
-            /**
-             * set post data
-             */
+        $pst_date = $this->input->post('pst-date');
+        $pet_date = $this->input->post('pet-date');
+        $pct_date = $this->input->post('pct-date');
+        if(!empty($pst_date) && !empty($pet_date) && !empty($pct_date)){
             $postArray = array(
                 "request_type"=>"Update",
                 "maconomyNo"=> $this->input->post('maconomyNo'),
