@@ -169,7 +169,7 @@ function jobDetailSection(job_number,jobdetail_url,mobile_device){
         cache: false,               
         data: {
             "job_number":job_number,
-            csrf_test_name: csrfHash
+            "csrf_test_name":csrfHash
         },
         success: function(res){                        
             try{
@@ -183,7 +183,8 @@ function jobDetailSection(job_number,jobdetail_url,mobile_device){
                     "Pending Cancellation",
                     "Closed Invoice Finalized"
                 ];
-                var data = jQuery.parseJSON(res);
+                var dataRes = JSON.stringify(res);
+                var data = jQuery.parseJSON(dataRes);
                 if(data.status === "Fail" && data.msg != "Something went wrong. Please try again !"){
                     $(".alert-danger").show();
                     $("input[name=csrf_test_name]").val(data.csrfHash);
@@ -238,6 +239,7 @@ function jobDetailSection(job_number,jobdetail_url,mobile_device){
                     }
                 }
             }catch(e) { 
+                console.log(e);
                 console.log('Exception while request..');
             }       
         },

@@ -53,7 +53,8 @@ class Timeline extends CI_Controller {
         }else{
             $responseArray = json_decode($jobDetailArray,true);
         }
-        $response = json_encode(array_merge($responseArray,$csrfArray));
+        $response = array_merge($responseArray,$csrfArray);
+        header('Content-Type: application/json');
         echo json_encode($response);
     }
 
