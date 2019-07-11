@@ -125,6 +125,7 @@
                     </div>
                     <div class="col-md-4 col-sm-12">
                         <div class="col-md-12 upper-text-format">Proposal Status</div>
+                        <input type="hidden" name="job_status" value="<?php if(count($job_detail)>0){echo $job_detail['status'];}?>" id="job_status"/>
                         <div class="col-md-12 lower-text-format" id="status"><?php if(count($job_detail)>0){echo $job_detail['status'];}?></div>
                     </div>
                     <div class="col-md-4 col-sm-12">

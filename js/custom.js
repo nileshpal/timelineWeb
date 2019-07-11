@@ -221,6 +221,7 @@ function jobDetailSection(job_number,jobdetail_url,mobile_device){
                         $("#proposalNo").text(data.proposalNO);
                         $("#accountName").text(data.accountName);
                         $("#status").text(data.status);
+                        $("#job_status").val(data.status);
                         $("#maconomyStatus").text(data.maconomyStatus);
                         $("#hidden-pst-date").val(data.startDate);
                         $("#pst-date").val(data.startDate);

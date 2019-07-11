@@ -25,7 +25,7 @@ class Timeline extends CI_Controller {
         $data['title'] = 'Timeline';
         $data['job_detail'] = array();
         $data['type'] ='';
-        $data['csrfVal'] = array(
+        $data[''] = array(
             'csrfName' => $this->security->get_csrf_token_name(),
             'csrfHash' => $this->security->get_csrf_hash()
         );
@@ -62,15 +62,21 @@ class Timeline extends CI_Controller {
         $pst_date = $this->input->post('pst-date');
         $pet_date = $this->input->post('pet-date');
         $pct_date = $this->input->post('pct-date');
+        $status = $this->input->post('job_status');
+        // server side validation for the status 
+        if($this->checkStatus($status)){
+            $this->session->set_flashdata('msg', 'Something went wrong. Please try again.');
+            redirect('/timeline');
+        }
         if(!empty($pst_date) && !empty($pet_date) && !empty($pct_date)){
             $postArray = array(
                 "request_type"=>"Update",
                 "maconomyNo"=> $this->input->post('maconomyNo'),
                 "maconomyId"=>  $this->input->post('proposal_id'),
                 "lastDateModified"=> $this->input->post('lastmodify'),
-                "startDate"=>$this->input->post('pst-date'),
-                "closeDate"=> $this->input->post('pet-date'),
-                "estimatedCloseDate"=> $this->input->post('pct-date')
+                "startDate"=>$pst_date,
+                "closeDate"=> $pet_date,
+                "estimatedCloseDate"=> $pct_date
             );
             $this->load->library('client');
             $response = $this->client->proposalByID($postArray);
@@ -113,6 +119,15 @@ class Timeline extends CI_Controller {
         }
         $data['type'] = $type;
         $this->load->view('timeline',$data);
+    }
+    
+    protected function checkStatus($status){
+        $status_config = $this->config->item('customStatus');
+        $checkStatus = false;
+        if(in_array($status_config, $status)){
+            $checkStatus = true;
+        }
+        return $checkStatus;
     }
             
 }
